@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { GrFacebookOption } from "react-icons/gr";
 import { FiYoutube } from "react-icons/fi";
 import { AiOutlineSkype } from "react-icons/ai";
@@ -8,22 +8,19 @@ import Fade from "react-reveal/Fade";
 
 function Footer() {
   return (
-    <div className="bg-[#211D32]   lg:px-28 pt-14 px-10 pb-10">
+    <div className="bg-[#211D32] lg:px-28 pt-14 px-10 pb-10">
       <Fade bottom cascade>
         <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-20">
           <div>
-            <h1 className="text-white font-semibold lg:text-2xl">BR33D</h1>
-            <p className="text-[#7A7893] xl:w-[559px] pt-4">
-              We ara a lorem ipsum dolor sit amet, consectetur adipiscing elit,
-              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+            <h1 className="text-white font-semibold lg:text-2xl">CARBON</h1>
+            <p className="text-[#696984] xl:w-[559px] pt-4">
+              We are dedicated to providing innovative solutions for reducing carbon emissions and promoting sustainability. Join us in our mission to create a greener future.
             </p>
             <div className="grid lg:grid-cols-1 xl:grid-cols-2 grid-cols-1 md:grid-cols-1 pt-9">
               <div className="flex gap-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-8 w-8 text-white bg-[#7A7893] rounded-full leading-4 p-2"
+                  className="h-8 w-8 text-white bg-[#009688] rounded-full leading-4 p-2"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -36,15 +33,15 @@ function Footer() {
                   />
                 </svg>
                 <div>
-                  <p className="text-[#7A7893] text-sm">Have a question?</p>
-                  <h3 className="text-white">312-417-2366</h3>
+                  <p className="text-[#696984] text-sm">Have a question?</p>
+                  <h3 className="text-white">666-36-29</h3>
                 </div>
               </div>
 
               <div className="flex gap-2 text-white md:pt-4 pt-4 xl:pt-0">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-8 w-8 text-white bg-[#7A7893] rounded-full leading-4 p-2"
+                  className="h-8 w-8 text-white bg-[#009688] rounded-full leading-4 p-2"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -57,8 +54,8 @@ function Footer() {
                   />
                 </svg>
                 <div>
-                  <p className="text-[#7A7893] text-sm">Contact us at</p>
-                  <h3>breedagency@gmail.com</h3>
+                  <p className="text-[#696984] text-sm">Contact us at</p>
+                  <h3>carbon1234@gmail.com</h3>
                 </div>
               </div>
             </div>
@@ -66,20 +63,17 @@ function Footer() {
 
           <div>
             <div>
-              <h2 className="text-white font-semibold lg:text-xl md:pt-4 pt-4">
-                Newsletter
-              </h2>
-              <p className="text-[#7A7893] xl:w-[555px] pt-4 pb-5">
-                Be the first one to know about discounts, offers and events.
-                Unsubscribe whenever you like.
+              <h2 className="text-white font-semibold lg:text-xl md:pt-4 pt-4">Query</h2>
+              <p className="text-[#696984] xl:w-[555px] pt-4 pb-5">
+                future details
               </p>
               <div className="relative">
                 <input
-                  placeholder="Enter your email"
+                  placeholder="Enter your Query"
                   className="rounded-full px-4 py-3 bg-[#342F49] w-full input-p"
-                ></input>
-                <button className="text-white md:px-7 md:py-3 px-3 py-3 text-xs md:text-base rounded-full bg-[#6366F1] absolute right-2 submit-btn hover:text-white c-btn tracking-wider overflow-hidden">
-                  <span className="absolute inset-0 bg-[#5558ff]"></span>
+                />
+                <button className="text-white md:px-7 md:py-3 px-3 py-3 text-xs md:text-base rounded-full bg-[#009688] absolute right-2 submit-btn hover:text-white c-btn tracking-wider">
+                  <span className="absolute inset-0 bg-[#00796B]"></span>
                   <span className="absolute inset-0 flex justify-center items-center">
                     Submit
                   </span>
@@ -91,15 +85,15 @@ function Footer() {
             <div className="flex justify-end pt-5 gap-4 socials">
               <div className="relative overflow-hidden block footer-div cursor-pointer">
                 <span className="block">
-                  <GrFacebookOption className="text-white bg-[#7A7893] rounded-full leading-4 p-2 h-8 w-8" />
+                  <GrFacebookOption className="text-white bg-[#009688] rounded-full leading-4 p-2 h-8 w-8" />
                 </span>
                 <span>
-                  <GrFacebookOption className="text-white bg-[#6366F1] rounded-full leading-4 p-2 h-8 w-8" />
+                  <GrFacebookOption className="text-white bg-[#00796B] rounded-full leading-4 p-2 h-8 w-8" />
                 </span>
               </div>
               <div className="relative overflow-hidden block footer-div cursor-pointer">
                 <span className="block">
-                  <FiYoutube className="text-white bg-[#7A7893] rounded-full leading-4 p-2 h-8 w-8" />
+                  <FiYoutube className="text-white bg-[#009688] rounded-full leading-4 p-2 h-8 w-8" />
                 </span>
                 <span>
                   <FiYoutube className="text-white bg-[#c63232] rounded-full leading-4 p-2 h-8 w-8" />
@@ -107,7 +101,7 @@ function Footer() {
               </div>
               <div className="relative overflow-hidden block footer-div cursor-pointer">
                 <span className="block">
-                  <AiOutlineSkype className="text-white bg-[#7A7893] rounded-full leading-4 p-2 h-8 w-8" />
+                  <AiOutlineSkype className="text-white bg-[#009688] rounded-full leading-4 p-2 h-8 w-8" />
                 </span>
                 <span>
                   <AiOutlineSkype className="text-white bg-[#5189f1] rounded-full leading-4 p-2 h-8 w-8" />
@@ -115,7 +109,7 @@ function Footer() {
               </div>
               <div className="relative overflow-hidden block footer-div cursor-pointer">
                 <span className="block">
-                  <FiFigma className="text-white bg-[#7A7893] rounded-full leading-4 p-2 h-8 w-8" />
+                  <FiFigma className="text-white bg-[#009688] rounded-full leading-4 p-2 h-8 w-8" />
                 </span>
                 <span>
                   <FiFigma className="text-white bg-[#5b337e] rounded-full leading-4 p-2 h-8 w-8" />
@@ -123,7 +117,7 @@ function Footer() {
               </div>
               <div className="relative overflow-hidden block footer-div cursor-pointer">
                 <span className="block">
-                  <FaWhatsapp className="text-white bg-[#7A7893] rounded-full leading-4 p-2 h-8 w-8" />
+                  <FaWhatsapp className="text-white bg-[#009688] rounded-full leading-4 p-2 h-8 w-8" />
                 </span>
                 <span>
                   <FaWhatsapp className="text-white bg-[#307f63] rounded-full leading-4 p-2 h-8 w-8" />
@@ -135,15 +129,15 @@ function Footer() {
 
         {/* Lower footer */}
         <div className="grid lg:grid-cols-2 grid-cols-1 pt-16 md:grid-cols-1">
-          <div className="md:flex justify-between text-[#7A7893] text-xs md:text-base flex-col lg:flex-row">
+          <div className="md:flex justify-between text-[#696984] text-xs md:text-base flex-col lg:flex-row">
             <p>About Us</p>
             <p>Contact</p>
             <p>Privacy Policy</p>
             <p>Sitemap</p>
             <p>Terms of Use</p>
           </div>
-          <div className="text-[#7A7893] lg:justify-end justify-start pt-4 flex md:justify-start md:pt-4 text-xs md:text-base lg:pt-0">
-            © 2000-2021, All Rights Reserved
+          <div className="text-[#696984] lg:justify-end justify-start pt-4 flex md:justify-start md:pt-4 text-xs md:text-base lg:pt-0">
+            © 2024-Present, All Rights Reserved
           </div>
         </div>
       </Fade>
@@ -151,4 +145,4 @@ function Footer() {
   );
 }
 
-export default Footer
+export default Footer;

@@ -8,11 +8,9 @@ function Clients() {
       <div className="bg-[#231E3D] pt-14   lg:px-28 px-10 pb-10">
         <Fade bottom cascade>
           <h1 className="lg:text-3xl text-white text-center text-3xl font-semibold whitespace-nowrap">
-            What Our Clients Say
+            feedback/review
           </h1>
-          <p className="text-[#696984] pt-4 pb-5 text-center">
-            Trusted by 5000+ companies worldwide.
-          </p>
+          
 
           <CarouselClients />
         </Fade>
