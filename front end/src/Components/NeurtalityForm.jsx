@@ -2,34 +2,22 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function NeutralityForm() {
+  const [formType, setFormType] = useState('sink'); // 'sink' or 'existing'
   const [sinkData, setSinkData] = useState({
     name: '',
     vegetationType: 'forest',
-    otherVegetationType: '', // To store custom vegetation type if 'Other' is selected
+    otherVegetationType: '',
     areaCovered: '',
     carbonSequestrationRate: '',
-    location: {
-      type: 'Point',
-      coordinates: ['', ''] // Assuming latitude and longitude
-    },
-    additionalDetails: ''
+    additionalDetails: '',
   });
 
+  const [result, setResult] = useState(null); // To store result from the backend
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name === 'coordinates') {
-      // Handling coordinates separately
-      setSinkData(prevData => ({
-        ...prevData,
-        location: {
-          ...prevData.location,
-          coordinates: value.split(',').map(coord => parseFloat(coord.trim()))
-        }
-      }));
-    } else if (name === 'vegetationType' && value === 'other') {
-      // Clear the custom vegetation type if 'Other' is selected
+    if (name === 'vegetationType' && value === 'other') {
       setSinkData(prevData => ({
         ...prevData,
         vegetationType: value,
@@ -43,18 +31,66 @@ function NeutralityForm() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Process the sink data
-    console.log('Carbon Sink Data:', sinkData);
-    // Navigate to a summary or result page if needed
-    navigate('/neutralityresult');
+
+    const payload = {
+      ...sinkData,
+      carbonSequestrationRate: parseFloat(sinkData.carbonSequestrationRate),
+      areaCovered: parseFloat(sinkData.areaCovered),
+      timeframe: 1 // Example timeframe, adjust as needed
+    };
+
+    try {
+      const apiEndpoint = formType === 'sink' ? 'http://localhost:5000/api/sinks' : 'http://localhost:5000/api/existing-sinks';
+      const response = await fetch(apiEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Response:', data);
+        setResult(data.data); // Save response data
+        // Clear form fields
+        setSinkData({
+          name: '',
+          vegetationType: 'forest',
+          otherVegetationType: '',
+          areaCovered: '',
+          carbonSequestrationRate: '',
+          additionalDetails: '',
+        });
+      } else {
+        console.error('Failed to submit form', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
+  };
+
+  const handleFormTypeChange = (e) => {
+    setFormType(e.target.value);
+    // Clear form fields when switching types
+    setSinkData({
+      name: '',
+      vegetationType: 'forest',
+      otherVegetationType: '',
+      areaCovered: '',
+      carbonSequestrationRate: '',
+      additionalDetails: '',
+    });
+    setResult(null);
   };
 
   const sectionStyle = "bg-[#342F49] p-6 rounded-lg shadow-lg border border-[#66C5CC]";
   const titleStyle = "text-2xl font-semibold text-[#66C5CC] mb-4";
   const inputStyle = "p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#66C5CC] text-lg placeholder-black";
   const buttonStyle = "px-6 py-3 text-white font-bold rounded-lg shadow-md transition-transform transform hover:scale-105 bg-[#66C5CC] hover:bg-[#55B2B6] focus:outline-none focus:ring-2 focus:ring-[#55B2B6]";
+  const radioStyle = "mr-4 text-white font-bold";
 
   return (
     <div className="p-6 md:p-10 lg:p-20 min-h-screen flex flex-col items-center relative overflow-hidden">
@@ -63,7 +99,34 @@ function NeutralityForm() {
           <div className="absolute inset-0 bg-gradient-to-r from-[#66C5CC] to-[#55B2B6] opacity-20 animate-pulse"></div>
         </div>
       </div>
+      
       <h1 className="text-3xl font-bold text-[#cad9ed] mb-8 text-center">Carbon Sink</h1>
+
+      {/* Radio Buttons for Toggle */}
+      <div className="mb-6">
+        <label className={radioStyle}>
+          <input
+            type="radio"
+            name="formType"
+            value="sink"
+            checked={formType === 'sink'}
+            onChange={handleFormTypeChange}
+            className="mr-2"
+          />
+          Carbon Sink
+        </label>
+        <label className={radioStyle}>
+          <input
+            type="radio"
+            name="formType"
+            value="existing"
+            checked={formType === 'existing'}
+            onChange={handleFormTypeChange}
+            className="mr-2"
+          />
+          Existing Sink
+        </label>
+      </div>
 
       <form className="space-y-8 w-full max-w-4xl" onSubmit={handleSubmit}>
         {/* Name */}
@@ -133,20 +196,17 @@ function NeutralityForm() {
           />
         </div>
 
-        {/* Location */}
+        {/* Additional Details */}
         <div className={sectionStyle}>
-          <h2 className={titleStyle}>Location (latitude, longitude)</h2>
-          <input
-            type="text"
-            name="coordinates"
-            value={sinkData.location.coordinates.join(', ')}
+          <h2 className={titleStyle}>Additional Details</h2>
+          <textarea
+            name="additionalDetails"
+            value={sinkData.additionalDetails}
             onChange={handleChange}
-            placeholder="Enter latitude and longitude separated by a comma"
+            placeholder="Any additional details"
             className={`${inputStyle} w-full`} // Full width for better length
           />
         </div>
-
-     
 
         <div className="text-center mt-8">
           <button type="submit" className={buttonStyle}>
@@ -154,6 +214,15 @@ function NeutralityForm() {
           </button>
         </div>
       </form>
+
+      {/* Display Result */}
+      {result && (
+        <div className="mt-8 p-6 bg-[#342F49] text-white rounded-lg shadow-lg border border-[#66C5CC] text-center">
+          <h2 className="text-2xl font-semibold text-[#66C5CC] mb-4">Result</h2>
+          <p><strong>Daily Sequestration Rate:</strong> {result.dailySequestrationRate}</p>
+          <p><strong>Total Sequestration:</strong> {result.totalSequestration}</p>
+        </div>
+      )}
     </div>
   );
 }
