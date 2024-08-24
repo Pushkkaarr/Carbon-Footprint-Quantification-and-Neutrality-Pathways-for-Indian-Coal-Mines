@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+    opacity: 0; /* Make scrollbar invisible by default */
+    transition: opacity 0.3s; /* Smooth transition effect */
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(51, 28, 153, 0.932); /* Subtle background for the track, similar to #211D32 */
+    border-radius: 10px; /* Rounded corners for the track */
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(35, 6, 116, 0.884); /* Semi-transparent thumb, similar to #6366F1 */
+    border-radius: 10px; /* Rounded corners for the thumb */
+    transition: background 0.9s ease; /* Smooth transition on hover */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(0, 0, 0); /* Darker thumb on hover, similar to #6366F1 */
+}
+
+/* Show scrollbar when scrolling or hovering */
+:hover::-webkit-scrollbar {
+    opacity: 1; /* Show scrollbar when hovering over the div */
+}
+
