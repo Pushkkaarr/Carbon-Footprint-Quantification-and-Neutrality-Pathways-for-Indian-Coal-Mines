@@ -3,6 +3,11 @@ import EmissionForm from "./EmissionForm";
 import Neutrality from "./Neutrality";
 import Enavbar from "./Enavbar";
 import Footer from "./Footer";
+import ElectricityConsumption from "./ElectricityConsumption";
+import ExplosionEmissions from "./ExplosionEmissions";
+import FuelCombustion from "./FuelCombustion";
+import ShippingEmissions from "./ShippingEmissions";
+import CombinedCode from "./CombinedCode";
 
 function Emission() {
   return (
@@ -12,7 +17,11 @@ function Emission() {
           <Route path="/" element={
             <>
               <Enavbar />
-              <EmissionForm />
+              {/* <ElectricityConsumption />
+              <ExplosionEmissions />
+              <FuelCombustion />
+              <ShippingEmissions /> */}
+              <CombinedCode />
               <Footer />
             </>
           } />
