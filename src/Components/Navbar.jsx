@@ -55,7 +55,7 @@ export default function Navbar({ className }) {
 
               {/* Title */}
               <div className="flex-shrink-0">
-                <h1 className="font-bold text-white text-3xl">CARBON</h1>
+                <h1 className="font-bold text-white text-3xl">GREENMINES</h1>
               </div>
 
               {/* Desktop Navigation */}

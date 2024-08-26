@@ -30,7 +30,7 @@ const GraphPage = () => {
                 data.shipping.reduce((acc, curr) => acc + parseFloat(curr.result?.carbonEmissions?.kilograms || 0), 0),
                 data.explosion.reduce((acc, curr) => acc + parseFloat(curr.emissions?.CO2 || 0), 0)
               ],
-              backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#31c423'],
+              backgroundColor: ['#d12a2a', '#36A2EB', '#ccbc2d', '#31c423'],
             }
           ]
         };

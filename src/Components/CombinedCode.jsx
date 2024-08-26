@@ -132,7 +132,7 @@ function CombinedCode() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#66C5CC] to-[#55B2B6] opacity-20 animate-pulse"></div>
       </div>
 
-      <div className="relative container mx-auto p-8 pt-10 bg-[#2B263F] rounded-lg shadow-lg border border-[#66C5CC] w-3/4 grid grid-cols-2 gap-8">{/*  max-w-3xl,  w-3/4 grid grid-cols-2 gap-8 */}
+      <div className="relative container mx-auto p-8 pt-10 bg-[#372f55] rounded-lg shadow-lg border border-[#66C5CC] w-3/4 grid grid-cols-2 gap-8">{/*  max-w-3xl,  w-3/4 grid grid-cols-2 gap-8 */}
       <div className="p-6 bg-[#2B263F] rounded-lg shadow-lg border border-[#66C5CC] mb-8">
   <h1 className="text-3xl font-bold text-[#cad9ed] mb-6 text-center">Electricity Consumption </h1>
 

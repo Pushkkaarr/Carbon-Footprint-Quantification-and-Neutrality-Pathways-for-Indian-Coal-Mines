@@ -35,9 +35,10 @@ function Header() {
                   Get Started
                 </button>
               </div>
-              <p className="xl:w-[50%] lg:w-[70%] md:w-[80%] text-[28px] text-gray-400 lg:leading-6 xl:pl-5 xl:pt-0 pt-4 pb-4">
-                CARBON is dedicated to providing innovative solutions for reducing carbon emissions and promoting sustainability. Join us in our mission to create a greener future.
-              </p>
+              <p className="xl:w-[50%] lg:w-[70%] md:w-[80%] text-[28px] text-gray-400 lg:leading-8 xl:pl-6 xl:pt-4 pt-6 pb-6 tracking-wider">
+  GREENMINES is dedicated to providing innovative solutions for reducing carbon emissions and promoting sustainability. Join us in our mission to create a greener future.
+</p>
+
             </div>
           </div>
         </Fade>
