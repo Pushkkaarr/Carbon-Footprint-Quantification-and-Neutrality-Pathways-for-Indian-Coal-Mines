@@ -15,13 +15,13 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgba(41, 9, 128, 0.884); /* Semi-transparent thumb, similar to #6366F1 */
+    background: rgba(35, 6, 116, 0.884); /* Semi-transparent thumb, similar to #6366F1 */
     border-radius: 10px; /* Rounded corners for the thumb */
-    transition: background 0.3s ease; /* Smooth transition on hover */
+    transition: background 0.9s ease; /* Smooth transition on hover */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: rgba(11, 224, 22, 0.877); /* Darker thumb on hover, similar to #6366F1 */
+    background: rgb(0, 0, 0); /* Darker thumb on hover, similar to #6366F1 */
 }
 
 /* Show scrollbar when scrolling or hovering */

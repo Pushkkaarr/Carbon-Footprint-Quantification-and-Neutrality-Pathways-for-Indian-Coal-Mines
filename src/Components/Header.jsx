@@ -1,8 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import Fade from "react-reveal/Fade";
 
 function Header() {
+  const navigate = useNavigate();
+
   return (
     <div className="from-[#2B263F] to-[#231E3D] bg-gradient-to-b w-full px-10 lg:px-28 lg:h-screen overflow-hidden">
       <Navbar className="z-50" />
@@ -19,7 +22,12 @@ function Header() {
             </h1>
             <div className="xl:flex justify-start mt-7">
               <div>
-                <button className="rounded px-7 py-3 bg-[#009688] text-white relative group hover:text-white overflow-hidden c-btn tracking-wider">
+                <button
+                  onClick={() => {navigate("/emission");
+                    console.log('Button clicked!');
+                  }}
+                  className="rounded px-7 py-3 bg-[#009688] text-white relative group hover:text-white overflow-hidden c-btn tracking-wider"
+                >
                   <span className="absolute inset-0 bg-[#00796B]"></span>
                   <span className="absolute inset-0 flex justify-center items-center">
                     Get Started
@@ -35,19 +43,19 @@ function Header() {
         </Fade>
 
         <div className="lg:flex lg:pt-8">
-        <Fade right cascade>
-          <div className="pr-24 lg:pr-0 relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-[#2B263F] to-[#231E3D] opacity-90 z-0"></div>
-            <div className="relative z-10">
-              <img
-                src="sust.jpg"
-                alt="Coal Mine Icon"
-                className="w-[760px] h-auto object-cover mix-blend-overlay"
-              />
+          <Fade right cascade>
+            <div className="pr-24 lg:pr-0 relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-[#2B263F] to-[#231E3D] opacity-90 z-0"></div>
+              <div className="relative z-10">
+                <img
+                  src="sust.jpg"
+                  alt="Coal Mine Icon"
+                  className="w-[760px] h-auto object-cover mix-blend-overlay"
+                />
+              </div>
             </div>
-          </div>
-        </Fade>
-      </div>
+          </Fade>
+        </div>
       </div>
     </div>
   );

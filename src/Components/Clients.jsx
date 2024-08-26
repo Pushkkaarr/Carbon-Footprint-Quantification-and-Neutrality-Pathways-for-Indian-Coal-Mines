@@ -8,7 +8,7 @@ function Clients() {
       <div className="bg-[#231E3D] pt-14   lg:px-28 px-10 pb-10">
         <Fade bottom cascade>
           <h1 className="lg:text-3xl text-white text-center text-3xl font-semibold whitespace-nowrap">
-            feedback/review
+            Feedback/Review
           </h1>
           
 
