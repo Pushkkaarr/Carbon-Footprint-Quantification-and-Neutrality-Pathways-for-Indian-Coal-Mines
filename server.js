@@ -34,7 +34,7 @@ app.get('/api/electricity-consumption', async (req, res) => {
       },
       headers: {
         'Accept': 'application/json',
-        'Authorization': 'Basic ' + Buffer.from('sujal6990:sujal9867').toString('base64')
+        'Authorization': 'Basic ' + Buffer.from({/*add your user key and password*/}).toString('base64')
       }
     });
 
@@ -75,7 +75,7 @@ app.get('/api/fuel-combustion', async (req, res) => {
       },
       headers: {
         'Accept': 'application/json',
-        'Authorization': 'Basic ' + Buffer.from('sujal6990:sujal9867').toString('base64')
+        'Authorization': 'Basic ' + Buffer.from({/*add your user key and password*/}).toString('base64')
       }
     });
 
