@@ -14,7 +14,7 @@ const ExistingSink=require("./models/ExistingSink")
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect('mongodb://localhost:27017/carbon-estimation', {
+mongoose.connect('mongodb+srv://sujalshah630:sujal9867@cluster0.o1wd3.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
