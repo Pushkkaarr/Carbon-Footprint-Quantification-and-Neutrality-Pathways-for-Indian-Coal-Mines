@@ -7,7 +7,7 @@ const initialReviews = [
     title: "Innovative Solutions That Exceed Expectations",
     description: "Our experience with CARBON has been nothing short of exceptional. Their expertise in software development and dedication to meeting our needs have been key to the success of our project. Highly recommend!",
     name: "Soham Smith",
-    position: "Chief Innovation Officer,(REAL NIGGA)"
+    position: "Chief Innovation Officer"
   },
   {
     imageSrc: "p2.jpeg",
