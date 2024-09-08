@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { Disclosure } from "@headlessui/react";
 import { HashLink } from "react-router-hash-link";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import logo from "./logo.png"; 
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -47,9 +48,13 @@ function Enavbar({ className }) {
                 </Disclosure.Button>
               </div>
 
-              {/* Title */}
+              {/* Logo */}
               <div className="flex-shrink-0">
-                <h1 className="font-bold text-[#66C5CC] text-4xl">GREENMINES</h1> {/* Increased font size */}
+                <img
+                  src={logo}
+                  alt="Logo"
+                  className="h-16 w-auto" // Adjust the height and width of the logo as needed
+                />
               </div>
 
               {/* Desktop Navigation */}
@@ -75,8 +80,7 @@ function Enavbar({ className }) {
 
               {/* Contact Us Button */}
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:pr-0">
-                <button onClick={() => {navigate("/contactus");
-                  }} className="text-white border rounded px-8 py-3 text-lg hover:text-white c-btn relative tracking-wider overflow-hidden">
+                <button onClick={() => navigate("/contactus")} className="text-white border rounded px-8 py-3 text-lg hover:text-white c-btn relative tracking-wider overflow-hidden">
                   <span className="absolute inset-0 bg-gradient-to-br from-[#6664F1] to-[#C94AF0]"></span>
                   <span className="absolute inset-0 flex justify-center items-center">
                     Contact Us
