@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Disclosure } from "@headlessui/react";
 import { HashLink } from "react-router-hash-link";
 import { useLocation, useNavigate } from "react-router-dom";
+import logo from "./logo.png";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -55,7 +56,11 @@ export default function Navbar({ className }) {
 
               {/* Title */}
               <div className="flex-shrink-0">
-                <h1 className="font-bold text-white text-3xl">GREENMINES</h1>
+                <img
+                  src={logo}
+                  alt="Logo"
+                  className="h-16 w-auto" // Adjust the height and width of the logo as needed
+                />
               </div>
 
               {/* Desktop Navigation */}
@@ -81,18 +86,17 @@ export default function Navbar({ className }) {
 
               {/* Contact Us Button */}
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:pr-0">
-                <button
-                  onClick={() => {navigate("/contactus");
-                  }} // Add onClick handler
-                  className="text-white border rounded px-8 py-3 text-lg hover:text-white c-btn relative tracking-wider overflow-hidden"
-                >
-                  <span className="absolute inset-0 bg-gradient-to-br from-[#6664F1] to-[#C94AF0]"></span>
-                  <span className="absolute inset-0 flex justify-center items-center">
-                    Contact Us
-                  </span>
-                  Contact Us
-                </button>
-              </div>
+  <button
+    onClick={() => navigate("/contactus")}
+    className="relative text-white border rounded px-8 py-3 text-lg hover:text-white c-btn tracking-wider overflow-hidden"
+  >
+    <span className="absolute inset-0 bg-gradient-to-br from-[#6664F1] to-[#C94AF0]"></span>
+    <span className="relative z-10 flex justify-center items-center">
+      Contact Us
+    </span>
+  </button>
+</div>
+
             </div>
           </div>
 
