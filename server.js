@@ -14,7 +14,7 @@ const ExistingSink=require("./models/ExistingSink")
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect('mongodb+srv://sujalshah630:sujal9867@cluster0.o1wd3.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
+mongoose.connect('process.env.MONGODB_URI', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
@@ -34,7 +34,7 @@ app.get('/api/electricity-consumption', async (req, res) => {
       },
       headers: {
         'Accept': 'application/json',
-        'Authorization': 'Basic ' + Buffer.from('sujal6990:sujal9867').toString('base64')
+        'Authorization': `Basic ${Buffer.from(`${process.env.CARBONKIT_USERNAME}:${process.env.CARBONKIT_PASSWORD}`).toString('base64')}`
       }
     });
 
@@ -75,7 +75,7 @@ app.get('/api/fuel-combustion', async (req, res) => {
       },
       headers: {
         'Accept': 'application/json',
-        'Authorization': 'Basic ' + Buffer.from('sujal6990:sujal9867').toString('base64')
+        'Authorization': `Basic ${Buffer.from(`${process.env.CARBONKIT_USERNAME}:${process.env.CARBONKIT_PASSWORD}`).toString('base64')}`
       }
     });
 
@@ -129,7 +129,7 @@ app.post('/api/shipping-emissions', async (req, res) => {
       },
       {
         headers: {
-          'Authorization': `Bearer ZguQ1dBUb7qSLQhpZQV3KQ`,
+          'Authorization': `Bearer ${process.env.CARBON_INTERFACE_API_KEY}`,
           'Content-Type': 'application/json'
         }
       }
