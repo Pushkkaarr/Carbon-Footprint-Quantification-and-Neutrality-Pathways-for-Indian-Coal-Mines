@@ -7,7 +7,7 @@ const FuelCombustion = require('./models/FuelCombustion');
 const Shipping = require('./models/Shipping');
 const Explosion = require('./models/Explosion');
 const app = express();
-const PORT = 5000;
+const PORT = process.env.Port || 5000;
 const Sink=require("./models/Sink")
 const ExistingSink=require("./models/ExistingSink")
 
