@@ -7,14 +7,14 @@ const FuelCombustion = require('./models/FuelCombustion');
 const Shipping = require('./models/Shipping');
 const Explosion = require('./models/Explosion');
 const app = express();
-const PORT = process.env.Port || 5000;
+const PORT = 5000;
 const Sink=require("./models/Sink")
 const ExistingSink=require("./models/ExistingSink")
 
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect('process.env.MONGODB_URI', {
+mongoose.connect('mongodb://localhost:27017/carbon-estimation', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
@@ -34,7 +34,7 @@ app.get('/api/electricity-consumption', async (req, res) => {
       },
       headers: {
         'Accept': 'application/json',
-        'Authorization': `Basic ${Buffer.from(`${process.env.CARBONKIT_USERNAME}:${process.env.CARBONKIT_PASSWORD}`).toString('base64')}`
+        'Authorization': 'Basic ' + Buffer.from('sujal6990:sujal9867').toString('base64')
       }
     });
 
@@ -75,7 +75,7 @@ app.get('/api/fuel-combustion', async (req, res) => {
       },
       headers: {
         'Accept': 'application/json',
-        'Authorization': `Basic ${Buffer.from(`${process.env.CARBONKIT_USERNAME}:${process.env.CARBONKIT_PASSWORD}`).toString('base64')}`
+        'Authorization': 'Basic ' + Buffer.from('sujal6990:sujal9867').toString('base64')
       }
     });
 
@@ -129,7 +129,7 @@ app.post('/api/shipping-emissions', async (req, res) => {
       },
       {
         headers: {
-          'Authorization': `Bearer ${process.env.CARBON_INTERFACE_API_KEY}`,
+          'Authorization': `Bearer ZguQ1dBUb7qSLQhpZQV3KQ`,
           'Content-Type': 'application/json'
         }
       }
@@ -371,4 +371,3 @@ app.get('/api/aggregate-data', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch aggregated data', details: error.message });
   }
 });
-

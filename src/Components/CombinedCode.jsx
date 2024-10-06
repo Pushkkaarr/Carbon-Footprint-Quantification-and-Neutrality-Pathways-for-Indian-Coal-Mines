@@ -2,6 +2,14 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import GraphPage from './GraphPage';
 import { Navigate, useNavigate } from 'react-router-dom';
+const stateOptions = [
+  'andhra pradesh', 'arunachal pardesh', 'assam', 'bihar', 'chattisgarh',
+  'delhi', 'goa', 'orissa', 'punjab', 'rajasthan',
+  'tamil nadu', 'tripura', 'uttar pradesh', 'uttaranchal', 'west bengal',
+  'gujarat', 'haryana', 'himachal pradesh', 'jammu and kashmir', 'jharkhand',
+  'karnataka', 'kereala', 'madhya pradesh', 'maharashtra', 'manipur',
+  'meghalaya', 'mizoram', 'nagaland'
+];
 
 function CombinedCode() {
   const navigate = useNavigate();
@@ -127,26 +135,30 @@ function CombinedCode() {
   
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-20 ">
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#2B263F] to-[#4B5563] overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#66C5CC] to-[#55B2B6] opacity-20 animate-pulse"></div>
-      </div>
-
-      <div className="relative container mx-auto p-8 pt-10 bg-[#372f55] rounded-lg shadow-lg border border-[#66C5CC] w-3/4 grid grid-cols-2 gap-8">{/*  max-w-3xl,  w-3/4 grid grid-cols-2 gap-8 */}
+     <div className="min-h-screen bg-gray-900 text-white p-4 sm:p-6 md:p-8 w-full overflow-x-hidden">
+    <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#2B263F] to-[#4B5563] overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-r from-[#66C5CC] to-[#55B2B6] opacity-20 animate-pulse"></div>
+    </div>
+  
+    <div className="relative container mx-auto p-4 sm:p-6 md:p-8 pt-10 bg-[#372f55] rounded-lg shadow-lg border border-[#66C5CC] sm:w-full md:w-3/4 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
+      {/*  max-w-3xl,  w-3/4 grid grid-cols-2 gap-8 */}
       <div className="p-6 bg-[#2B263F] rounded-lg shadow-lg border border-[#66C5CC] mb-8">
-  <h1 className="text-3xl font-bold text-[#cad9ed] mb-6 text-center">Electricity Consumption </h1>
-
-  <div className="space-y-6">
-    <div>
-      <label className="block mb-2 text-lg font-medium text-[#cad9ed]">State Name:</label>
-      <input
-        type="text"
+      <h1 className="text-2xl sm:text-3xl font-bold text-[#cad9ed] mb-4 sm:mb-6 text-center">Electricity Consumption</h1>
+      
+      <div className="space-y-4 sm:space-y-6">
+        <div>
+          <label className="block mb-2 text-lg font-medium text-[#cad9ed]">State Name:</label>
+      <select
         name="stateName"
         value={electricityData.stateName}
         onChange={handleElectricityChange}
         className="w-full p-3 border border-[#66C5CC] rounded bg-[#2B263F] text-[#cad9ed] placeholder-gray-400"
-        placeholder="State Name"
-      />
+      >
+        <option value="" disabled>Select State</option>
+        {stateOptions.map((state, index) => (
+          <option key={index} value={state}>{state}</option>
+        ))}
+      </select>   
     </div>
     <div>
       <label className="block mb-2 text-lg font-medium text-[#cad9ed]">Energy per Time (kW·h/day):</label>
@@ -182,19 +194,18 @@ function CombinedCode() {
       />
     </div>
     <div className="text-center">
-    <button
-  onClick={fetchElectricityData}
-  className="px-6 py-2 bg-[#66C5CC] text-black font-bold rounded-lg shadow-lg hover:bg-[#55B2B6] hover:text-white transform hover:scale-105 active:scale-95 transition duration-100 ease-in-out"
->
-  Calculate
-</button>
-
-    </div>
+          <button
+            onClick={fetchElectricityData}
+            className="px-4 py-2 sm:px-6 sm:py-2 bg-[#66C5CC] text-black font-bold rounded-lg shadow-lg hover:bg-[#55B2B6] hover:text-white transform hover:scale-105 active:scale-95 transition duration-100 ease-in-out"
+          >
+            Calculate
+          </button>
+        </div>
   </div>
 
   {electricityResult && (
-    <div className="mt-8 p-6 bg-[#342F49] rounded-lg shadow-lg border border-[#66C5CC]">
-      <h2 className="text-2xl font-semibold text-[#66C5CC] mb-4">Electricity Consumption Results</h2>
+     <div className="mt-6 sm:mt-8 p-4 sm:p-6 bg-[#342F49] rounded-lg shadow-lg border border-[#66C5CC]">
+          <h2 className="text-xl sm:text-2xl font-semibold text-[#66C5CC] mb-4">Electricity Consumption Results</h2>
       <ul className="text-lg text-white">
         {Object.entries(electricityResult).map(([type, { value, unit }]) => (
           <li key={type}>{type}: {value} {unit}</li>
@@ -204,69 +215,68 @@ function CombinedCode() {
   )}
 </div>
 
-       <div className="p-6 bg-[#2B263F] rounded-lg shadow-lg border border-[#66C5CC] mb-8">
-        <h1 className="text-3xl font-bold text-[#cad9ed] mb-8 text-center">Explosion Emissions </h1>
+<div className="p-4 sm:p-6 bg-[#2B263F] rounded-lg shadow-lg border border-[#66C5CC] mb-6 sm:mb-8">
+  <h1 className="text-2xl sm:text-3xl font-bold text-[#cad9ed] mb-6 sm:mb-8 text-center">Explosion Emissions</h1>
 
-        <div className="space-y-6">
-          <div>
-            <label className="block mb-2 text-lg font-medium text-[#cad9ed]">Explosive Type:</label>
-            <select
-              name="explosiveType"
-              value={explosionData.explosiveType}
-              onChange={handleExplosionChange}
-              className="w-full p-3 border border-[#66C5CC] rounded bg-[#2B263F] text-[#cad9ed] placeholder-gray-400"
-            >
-              <option value="">--Select Explosive Type--</option>
-              <option value="Black powder">Black powder</option>
-              <option value="Smokeless powder">Smokeless powder</option>
-              <option value="Dynamite, straight">Dynamite, straight</option>
-              <option value="Dynamite, ammonia">Dynamite, ammonia</option>
-              <option value="Dynamite, gelatin">Dynamite, gelatin</option>
-              <option value="ANFO">ANFO</option>
-              <option value="TNT">TNT</option>
-              <option value="RDX">RDX</option>
-              <option value="PETN">PETN</option>
-            </select>
-          </div>
-          <div>
-            <label className="block mb-2 text-lg font-medium text-[#cad9ed]">Amount of Explosive Used (kg):</label>
-            <input
-              type="number"
-              name="amount"
-              value={explosionData.amount}
-              onChange={handleExplosionChange}
-              className="w-full p-3 border border-[#66C5CC] rounded bg-[#2B263F] text-[#cad9ed] placeholder-gray-400"
-            />
-          </div>
-          <div className="text-center">
-          <button
-  onClick={fetchExplosionData}
-  className="px-6 py-2 bg-[#66C5CC] text-black font-bold rounded-lg shadow-lg hover:bg-[#55B2B6] hover:text-white transform hover:scale-105 active:scale-95 transition duration-300 ease-in-out"
->
-  Calculate
-</button>
+  <div className="space-y-4 sm:space-y-6">
+    <div>
+      <label className="block mb-2 text-base sm:text-lg font-medium text-[#cad9ed]">Explosive Type:</label>
+      <select
+        name="explosiveType"
+        value={explosionData.explosiveType}
+        onChange={handleExplosionChange}
+        className="w-full p-3 border border-[#66C5CC] rounded bg-[#2B263F] text-[#cad9ed] placeholder-gray-400"
+      >
+        <option value="">--Select Explosive Type--</option>
+        <option value="Black powder">Black powder</option>
+        <option value="Smokeless powder">Smokeless powder</option>
+        <option value="Dynamite, straight">Dynamite, straight</option>
+        <option value="Dynamite, ammonia">Dynamite, ammonia</option>
+        <option value="Dynamite, gelatin">Dynamite, gelatin</option>
+        <option value="ANFO">ANFO</option>
+        <option value="TNT">TNT</option>
+        <option value="RDX">RDX</option>
+        <option value="PETN">PETN</option>
+      </select>
+    </div>
+    <div>
+      <label className="block mb-2 text-base sm:text-lg font-medium text-[#cad9ed]">Amount of Explosive Used (kg):</label>
+      <input
+        type="number"
+        name="amount"
+        value={explosionData.amount}
+        onChange={handleExplosionChange}
+        className="w-full p-3 border border-[#66C5CC] rounded bg-[#2B263F] text-[#cad9ed] placeholder-gray-400"
+      />
+    </div>
+    <div className="text-center">
+      <button
+        onClick={fetchExplosionData}
+        className="px-4 py-2 sm:px-6 sm:py-3 bg-[#66C5CC] text-black font-bold rounded-lg shadow-lg hover:bg-[#55B2B6] hover:text-white transform hover:scale-105 active:scale-95 transition duration-300 ease-in-out"
+      >
+        Calculate
+      </button>
+    </div>
+  </div>
 
-          </div>
-        </div>
+  {error && <p className="text-red-500 mt-4 text-center">{error}</p>}
 
-        {error && <p className="text-red-500 mt-4 text-center">{error}</p>}
+  {explosionResult && (
+    <div className="mt-6 sm:mt-10 p-4 sm:p-6 bg-[#342F49] rounded-lg shadow-lg border border-[#66C5CC]">
+      <h2 className="text-xl sm:text-2xl font-semibold text-[#66C5CC] mb-4">Explosion Emissions Results</h2>
+      <p className="text-base sm:text-lg text-[#cad9ed]">Explosive Type: {explosionResult.explosiveType}</p>
+      <p className="text-base sm:text-lg text-[#cad9ed]">Amount: {explosionResult.amount} kg</p>
+      <p className="text-base sm:text-lg text-[#cad9ed]">CO2: {explosionResult.emissions.CO2}</p>
+      <p className="text-base sm:text-lg text-[#cad9ed]">CO: {explosionResult.emissions.CO}</p>
+      <p className="text-base sm:text-lg text-[#cad9ed]">NOx: {explosionResult.emissions.NOx}</p>
+      <p className="text-base sm:text-lg text-[#cad9ed]">NH3: {explosionResult.emissions.NH3}</p>
+      <p className="text-base sm:text-lg text-[#cad9ed]">HCN: {explosionResult.emissions.HCN}</p>
+      <p className="text-base sm:text-lg text-[#cad9ed]">H2S: {explosionResult.emissions.H2S}</p>
+      <p className="text-base sm:text-lg text-[#cad9ed]">SO2: {explosionResult.emissions.SO2}</p>
+    </div>
+  )}
+</div>
 
-        {explosionResult && (
-          <div className="mt-10 p-6 bg-[#342F49] rounded-lg shadow-lg border border-[#66C5CC]">
-            <h2 className="text-2xl font-semibold text-[#66C5CC] mb-4">Explosion Emissions Results</h2>
-            <p className="text-[#cad9ed]">Explosive Type: {explosionResult.explosiveType}</p>
-            <p className="text-[#cad9ed]">Amount: {explosionResult.amount} kg</p>
-            <p className="text-[#cad9ed]">CO2: {explosionResult.emissions.CO2}</p>
-            <p className="text-[#cad9ed]">CO: {explosionResult.emissions.CO}</p>
-            <p className="text-[#cad9ed]">NOx: {explosionResult.emissions.NOx}</p>
-            <p className="text-[#cad9ed]">NH3: {explosionResult.emissions.NH3}</p>
-            <p className="text-[#cad9ed]">HCN: {explosionResult.emissions.HCN}</p>
-            <p className="text-[#cad9ed]">H2S: {explosionResult.emissions.H2S}</p>
-            <p className="text-[#cad9ed]">SO2: {explosionResult.emissions.SO2}</p>
-          </div>
-        )}
-        </div>
-  
   
         <div className="p-6 bg-[#2B263F] rounded-lg shadow-lg border border-[#66C5CC] mb-8">
         <h1 className="text-3xl font-bold text-[#cad9ed] mb-8 text-center">Fuel Combustion Emissions </h1>

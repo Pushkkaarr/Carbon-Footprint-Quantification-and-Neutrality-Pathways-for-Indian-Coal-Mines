@@ -23,25 +23,20 @@ export default function Navbar({ className }) {
 
   useEffect(() => {
     // Update the `current` property based on the current URL
-    const updatedNavs = navs.map(nav => ({
+    const updatedNavs = navigation.map(nav => ({
       ...nav,
       current: location.pathname === nav.href
     }));
     setNavs(updatedNavs);
-  }, [location.pathname, navs]);
-
-  const handleActive = (nav) => {
-    // This function is no longer needed as we handle active state with useEffect
-  };
-
-  
+  }, [location.pathname]);
 
   return (
     <Disclosure as="nav" className={`bg-transparent ${className}`}>
       {({ open }) => (
         <>
           <div className="w-full px-4">
-            <div className="relative flex items-center justify-between h-20 max-w-screen-2xl mx-auto">
+          <div className="relative flex items-center justify-between h-20 max-w-screen-2xl mx-auto sm:mt-4 mt-8">
+
               {/* Mobile menu button */}
               <div className="sm:hidden">
                 <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
@@ -59,7 +54,7 @@ export default function Navbar({ className }) {
                 <img
                   src={logo}
                   alt="Logo"
-                  className="h-16 w-auto" // Adjust the height and width of the logo as needed
+                  className="h-10 w-auto" // Adjust the height and width of the logo as needed
                 />
               </div>
 
@@ -85,7 +80,7 @@ export default function Navbar({ className }) {
               </div>
 
               {/* Contact Us Button */}
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:pr-0">
+<div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:pr-0 hidden sm:flex">
   <button
     onClick={() => navigate("/contactus")}
     className="relative text-white border rounded px-8 py-3 text-lg hover:text-white c-btn tracking-wider overflow-hidden"
@@ -97,30 +92,31 @@ export default function Navbar({ className }) {
   </button>
 </div>
 
+
             </div>
           </div>
 
           {/* Mobile Menu */}
           <Disclosure.Panel className="sm:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              {navs.map((item) => (
-                <Disclosure.Button
-                  key={item.name}
-                  as="a"
-                  href={item.href}
-                  className={classNames(
-                    item.current
-                      ? "bg-transparent text-white"
-                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                    "block px-4 py-3 rounded-md text-lg font-medium"
-                  )}
-                  aria-current={item.current ? "page" : undefined}
-                >
-                  {item.name}
-                </Disclosure.Button>
-              ))}
-            </div>
-          </Disclosure.Panel>
+        <div className="px-2 pt-2 pb-3 space-y-1">
+          {navs.map((item) => (
+            <Disclosure.Button
+              key={item.name}
+              as="a"
+              href={item.href}
+              className={classNames(
+                item.current
+                  ? "bg-[#342F49] text-[#66C5CC]"
+                  : "text-[#66C5CC] hover:bg-[#342F49] hover:text-white",
+                "block px-6 py-3 rounded-md text-lg font-semibold"
+              )}
+              aria-current={item.current ? "page" : undefined}
+            >
+              {item.name}
+            </Disclosure.Button>
+          ))}
+        </div>
+      </Disclosure.Panel>
         </>
       )}
     </Disclosure>

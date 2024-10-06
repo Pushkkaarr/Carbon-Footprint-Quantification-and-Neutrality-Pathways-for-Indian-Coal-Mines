@@ -1,18 +1,27 @@
-import React from "react";
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { GrFacebookOption } from "react-icons/gr";
 import { FiYoutube } from "react-icons/fi";
 import { AiOutlineSkype } from "react-icons/ai";
 import { FiFigma } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
-import Fade from "react-reveal/Fade";
 
 function Footer() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false, margin: '0px' });
+
+  const fadeIn = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    transition: { duration: 0.8 },
+  };
+
   return (
     <div className="bg-[#211D32] lg:px-28 pt-14 px-10 pb-10">
-      <Fade bottom cascade>
+      <motion.div ref={ref} {...fadeIn}>
         <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-20">
           <div>
-            <h1 className="text-white font-semibold lg:text-2xl">CARBON</h1>
+            <h1 className="text-white font-semibold lg:text-2xl">GREENMINES</h1>
             <p className="text-[#696984] xl:w-[559px] pt-4">
               We are dedicated to providing innovative solutions for reducing carbon emissions and promoting sustainability. Join us in our mission to create a greener future.
             </p>
@@ -55,7 +64,7 @@ function Footer() {
                 </svg>
                 <div>
                   <p className="text-[#696984] text-sm">Contact us at</p>
-                  <h3>carbon1234@gmail.com</h3>
+                  <h3>greenmines1234@gmail.com</h3>
                 </div>
               </div>
             </div>
@@ -128,7 +137,7 @@ function Footer() {
         </div>
 
         {/* Lower footer */}
-        <div className="grid lg:grid-cols-2 grid-cols-1 pt-16 md:grid-cols-1">
+        <motion.div {...fadeIn} className="grid lg:grid-cols-2 grid-cols-1 pt-16 md:grid-cols-1">
           <div className="md:flex justify-between text-[#696984] text-xs md:text-base flex-col lg:flex-row">
             <p>About Us</p>
             <p>Contact</p>
@@ -139,8 +148,8 @@ function Footer() {
           <div className="text-[#696984] lg:justify-end justify-start pt-4 flex md:justify-start md:pt-4 text-xs md:text-base lg:pt-0">
             © 2024-Present, All Rights Reserved
           </div>
-        </div>
-      </Fade>
+        </motion.div>
+      </motion.div>
     </div>
   );
 }

@@ -1,62 +1,80 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
-import Fade from "react-reveal/Fade";
+import { motion, useInView } from "framer-motion";
 
 function Header() {
   const navigate = useNavigate();
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false, margin: "0px" });
+
+  // Updated Animation variants for more fade
+  const fadeInLeft = {
+    initial: { opacity: 0, x: -50 },
+    animate: { opacity: 1, x: 0 },
+    transition: { duration: 1.5, ease: "easeInOut" }, // Smooth easing
+  };
+
+  const fadeInRight = {
+    initial: { opacity: 0, x: 50 },
+    animate: { opacity: 1, x: 0 },
+    transition: { duration: 1.5, ease: "easeInOut" }, // Smooth easing
+  };
 
   return (
-    <div className="from-[#2B263F] to-[#231E3D] bg-gradient-to-b w-full px-10 lg:px-28 lg:h-screen overflow-hidden">
+    <div className="from-[#2B263F] to-[#231E3D] bg-gradient-to-b w-full px-6 sm:px-10 lg:h-screen overflow-x-hidden">
       <Navbar className="z-50" />
-      <div className="lg:flex lg:pt-8">
-        <Fade left cascade>
-          <div className="lg:w-[800px] container xl:pt-24 lg:pt-10 pt-20">
-            <h1 className="font-[1000] xl:text-[4.2rem] lg:text-[3rem] md:text-[3.2rem] text-3xl lg:w-[79%] text-white xl:leading-[5rem] md:leading-[4rem]">
-              Tackling Climate Change with{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#66C5CC] to-[#009688]">
-                {" "}
-                CARBON{" "}
+      <div className="flex lg:flex-row flex-col justify-between items-center lg:-mt-16 mt-10 lg:mt-0">
+        {/* Left div with text and button */}
+        <motion.div
+          ref={ref}
+          initial="initial"
+          animate="animate"
+          variants={fadeInLeft}
+          className="lg:w-1/2 w-full lg:pt-24 pt-12"
+        >
+          <h1 className="font-extrabold xl:text-[4.2rem] lg:text-[3rem] md:text-[3.2rem] text-[2.2rem] lg:w-[90%] text-white xl:leading-[5rem] md:leading-[4rem] leading-9">
+            Tackling Climate Change with{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#66C5CC] to-[#009688]">
+              CARBON
+            </span>{" "}
+            Solutions
+          </h1>
+
+          <p className="xl:w-[80%] lg:w-[90%] w-full text-[1rem] sm:text-[1.2rem] text-gray-400 lg:leading-8 leading-6 tracking-wider mt-4 sm:mt-6">
+            GREENMINES provides innovative solutions to reduce carbon emissions
+            and promote sustainability. Join us in building a greener future.
+          </p>
+
+          <div className="mt-6">
+            <button
+              onClick={() => {
+                navigate("/emission");
+                console.log("Button clicked!");
+              }}
+              className="rounded px-7 py-3 bg-[#009688] text-white relative group hover:text-white overflow-hidden tracking-wider"
+            >
+              <span className="relative inset-0 bg-[#00796B]"></span>
+              <span className="relative inset-0 flex justify-center items-center">
+                Get Started
               </span>
-              Solutions
-            </h1>
-            <div className="xl:flex justify-start mt-7">
-              <div>
-                <button
-                  onClick={() => {navigate("/emission");
-                    console.log('Button clicked!');
-                  }}
-                  className="rounded px-7 py-3 bg-[#009688] text-white relative group hover:text-white overflow-hidden c-btn tracking-wider"
-                >
-                  <span className="absolute inset-0 bg-[#00796B]"></span>
-                  <span className="absolute inset-0 flex justify-center items-center">
-                    Get Started
-                  </span>
-                  Get Started
-                </button>
-              </div>
-              <p className="xl:w-[50%] lg:w-[70%] md:w-[80%] text-[28px] text-gray-400 lg:leading-8 xl:pl-6 xl:pt-4 pt-6 pb-6 tracking-wider">
-  GREENMINES is dedicated to providing innovative solutions for reducing carbon emissions and promoting sustainability. Join us in our mission to create a greener future.
-</p>
-
-            </div>
+            </button>
           </div>
-        </Fade>
+        </motion.div>
 
-        <div className="lg:flex lg:pt-8">
-          <Fade right cascade>
-            <div className="pr-24 lg:pr-0 relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-[#2B263F] to-[#231E3D] opacity-90 z-0"></div>
-              <div className="relative z-10">
-                <img
-                  src="sust.jpg"
-                  alt="Coal Mine Icon"
-                  className="w-[760px] h-auto object-cover mix-blend-overlay"
-                />
-              </div>
-            </div>
-          </Fade>
-        </div>
+        {/* Right div with image */}
+        <motion.div
+          initial="initial"
+          animate="animate"
+          variants={fadeInRight}
+          className="lg:w-1/2 w-full lg:pt-0 flex justify-center mt-12 lg:mt-28"
+        >
+          <img
+            src="sust.jpg"
+            alt="Sustainability"
+            className="w-[100%] sm:w-[90%] lg:w-[80%] h-auto object-cover rounded-lg"
+          />
+        </motion.div>
       </div>
     </div>
   );
