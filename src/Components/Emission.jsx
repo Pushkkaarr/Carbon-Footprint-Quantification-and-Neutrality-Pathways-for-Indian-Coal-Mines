@@ -5,7 +5,7 @@ import Enavbar from "./Enavbar";
 import Footer from "./Footer";
 import ElectricityConsumption from "./ElectricityConsumption";
 import ExplosionEmissions from "./ExplosionEmissions";
-import FuelCombustion from "./FuelCombustion";
+import FuelCombustion from "./FuelCombustion"; 
 import ShippingEmissions from "./ShippingEmissions";
 import CombinedCode from "./CombinedCode";
 
